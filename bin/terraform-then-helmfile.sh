@@ -24,15 +24,15 @@ function up() {
     pushd terraform/
     terraform init
     terraform apply -auto-approve -var "account_id=$(get_aws_account_id)"
-	popd
+    popd
 
     set_kubeconfig
 
     # Install Tiller (use cluster-admin for now)
-	helm init
-	kubectl create serviceaccount --namespace kube-system tiller || true
-	kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller || true
-	kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+    helm init
+    kubectl create serviceaccount --namespace kube-system tiller || true
+    kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller || true
+    kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 
     #  Give Tiller some time to restart
     sleep 20
@@ -65,8 +65,8 @@ function down() {
     # Run Terraform
     pushd terraform/
     terraform init
-	terraform destroy -auto-approve -var "account_id=$(get_aws_account_id)"
-	popd
+    terraform destroy -auto-approve -var "account_id=$(get_aws_account_id)"
+    popd
 
     set +x
     echo "---------------------------------------------------------------"
