@@ -26,6 +26,6 @@ $ tree
 
 Please see [this example](./examples/eks-hackmd).
 
-To use, simply run `terraform-then-helmfile up`.
+To use, simply run `terraform-then-helmfile up` (make sure to save the resulting `terraform.tfstate` file somewhere).
 
 To destroy everything, run `terraform-then-helmfile down`.
