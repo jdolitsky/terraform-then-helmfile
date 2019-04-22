@@ -1,0 +1,9 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: hackmd
+    namespace: hackmd
+    chart: stable/hackmd
+    version: 1.0.1
